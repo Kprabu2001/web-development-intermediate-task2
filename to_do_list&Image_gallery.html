@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>To-Do List & Gallery</title>
+ <style>
+   body { font-family: Arial; padding: 20px; }
+   input, button { padding: 8px; margin: 5px; }
+   ul { list-style: none; padding: 0; }
+   li { padding: 8px; background: #eee; margin: 5px 0; border-radius: 5px; cursor: pointer; }
+   img { width: 120px; margin: 5px; border-radius: 8px; }
+ </style>
+</head>
+<body>
+ <h2>To-Do List</h2>
+ <input type="text" id="task" placeholder="Enter task">
+ <button onclick="addTask()">Add</button>
+ <ul id="taskList"></ul>
+ <h2>Image Gallery</h2>
+ <input type="text" id="imgUrl" placeholder="Enter image URL">
+ <button onclick="addImage()">Add Image</button>
+ <div id="gallery"></div>
+ <script>
+   function addTask() {
+     let taskInput = document.getElementById("task").value;
+     if(taskInput.trim() !== ""){
+       let li = document.createElement("li");
+       li.textContent = taskInput;
+       li.onclick = () => li.remove();
+       document.getElementById("taskList").appendChild(li);
+       document.getElementById("task").value = "";
+     }
+   }
+   function addImage() {
+     let url = document.getElementById("imgUrl").value;
+     if(url.trim() !== ""){
+       let img = document.createElement("img");
+       img.src = url;
+       img.onclick = () => img.remove();
+       document.getElementById("gallery").appendChild(img);
+       document.getElementById("imgUrl").value = "";
+     }
+   }
+ </script>
+</body>
+</html>
